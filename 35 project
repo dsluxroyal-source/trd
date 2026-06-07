@@ -1,0 +1,21 @@
+import json
+print("=== Dictionary App ===")
+print("Type 'exit' to quit.")
+def load_dictionary():
+    try:
+        with open("dictionary.json", "r") as file:
+            return json.load(file)
+    except FileNotFoundError:
+        print("Dictionary file not found.")
+        return {}
+dictionary = load_dictionary()
+while True:
+    word = input("\nEnter a word: ").lower()
+    if word == "exit":
+        print("Goodbye!")
+        break
+    if word in dictionary:
+        print("\nMeaning:")
+        print(dictionary[word])
+    else:
+        print("Word not found.")
